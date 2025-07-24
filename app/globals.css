@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'DIN Condensed VF';
+  src: url('/images/din.otf') format('opentype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    @apply font-din;
+  }
+  
+  body {
+    @apply min-h-screen font-din;
+    background: #ffc700;
+    color: #B6221A;
+    text-transform: uppercase;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    background: #B6221A;
+    @apply hover:opacity-90 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg;
+  }
+  
+  .btn-secondary {
+    background: #B6221A;
+    color: white;
+    @apply hover:opacity-90 font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg;
+  }
+  
+
+  
+  .admin-card {
+    background: #ffffff;
+    color: #B6221A;
+    @apply backdrop-blur-md rounded-lg p-4 shadow-lg border-2;
+    border-color: #B6221A;
+  }
+  
+  .text-primary {
+    color: #B6221A;
+  }
+  
+  .text-secondary {
+    color: #B6221A;
+    opacity: 1;
+  }
+  
+  .text-muted {
+    color: #B6221A;
+    opacity: 0.6;
+  }
+}
