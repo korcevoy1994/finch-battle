@@ -5,16 +5,17 @@ import QRCodeLib from 'qrcode'
 
 interface QRCodeProps {
   className?: string
+  url?: string
 }
 
-export default function QRCode({ className = '' }: QRCodeProps) {
+export default function QRCode({ className = '', url }: QRCodeProps) {
   const [qrCodeUrl, setQrCodeUrl] = useState<string>('')
 
   useEffect(() => {
     const generateQRCode = async () => {
       try {
-        const currentUrl = window.location.href
-        const qrDataUrl = await QRCodeLib.toDataURL(currentUrl, {
+        const targetUrl = url || window.location.href
+        const qrDataUrl = await QRCodeLib.toDataURL(targetUrl, {
           width: 240,
           margin: 1,
           color: {
@@ -29,7 +30,7 @@ export default function QRCode({ className = '' }: QRCodeProps) {
     }
 
     generateQRCode()
-  }, [])
+  }, [url])
 
   if (!qrCodeUrl) return null
 

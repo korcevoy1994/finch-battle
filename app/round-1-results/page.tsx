@@ -56,7 +56,7 @@ export default function Round1ResultsPage() {
           numberOfWinners={2}
         />
       </div>
-      <QRCode />
+      <QRCode url="/round-1" />
     </div>
   )
 }
