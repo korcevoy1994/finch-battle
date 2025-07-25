@@ -52,7 +52,7 @@ export default function Round2ResultsPage() {
           showConfetti={!timerState.isRunning && timerState.timeLeft === 0 && !votingStartedAt}
         />
       </div>
-      <QRCode url="/round-2" />
+      <QRCode url={`${window.location.origin}/round-2`} />
     </div>
   )
 }
