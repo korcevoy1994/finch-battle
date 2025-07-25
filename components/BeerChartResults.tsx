@@ -208,24 +208,40 @@ function BeerGlass({ result, maxVotes, delay, animate, isWinner }: BeerGlassProp
              left: 0;
              right: 0;
              background: 
-                radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 25% 15%, rgba(255, 255, 255, 0.6) 0%, transparent 40%),
+                radial-gradient(ellipse at 75% 25%, rgba(255, 255, 255, 0.3) 0%, transparent 35%),
+                radial-gradient(ellipse at 50% 80%, rgba(139, 69, 19, 0.2) 0%, transparent 60%),
                 linear-gradient(
                   to bottom,
                   #FFF8DC 0%,
-                  #FFD700 25%,
-                  #F0C814 50%,
-                  #DAA520 75%,
-                  #B8860B 100%
+                  #FFE135 8%,
+                  #FFD700 20%,
+                  #F4C430 35%,
+                  #E6B800 50%,
+                  #DAA520 65%,
+                  #CD853F 80%,
+                  #B8860B 90%,
+                  #8B4513 100%
+                ),
+                linear-gradient(
+                  45deg,
+                  rgba(255, 255, 255, 0.1) 0%,
+                  transparent 30%,
+                  rgba(139, 69, 19, 0.1) 70%,
+                  transparent 100%
                 );
              transition: height 1.2s cubic-bezier(0.4, 0.0, 0.2, 1);
              transition-delay: ${delay}s;
              height: ${animate ? fillPercentage : 0}%;
              border-radius: 0 0 25px 25px;
              box-shadow: 
-               inset -3px 0 8px rgba(0, 0, 0, 0.1),
-               inset 3px 0 8px rgba(255, 255, 255, 0.2),
-               inset 0 2px 8px rgba(0, 0, 0, 0.1),
-               inset 0 -2px 4px rgba(255, 255, 255, 0.2);
+               inset -4px 0 12px rgba(139, 69, 19, 0.3),
+               inset 4px 0 12px rgba(255, 255, 255, 0.4),
+               inset 0 3px 10px rgba(0, 0, 0, 0.2),
+               inset 0 -3px 8px rgba(255, 255, 255, 0.3),
+               0 0 20px rgba(218, 165, 32, 0.4);
+             animation: liquid-wave 6s infinite ease-in-out;
+             animation-delay: ${delay + 1}s;
           }
           
 
@@ -238,42 +254,60 @@ function BeerGlass({ result, maxVotes, delay, animate, isWinner }: BeerGlassProp
              right: 0;
              height: 100%;
              background: 
-               radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.4) 1px, transparent 2px),
-               radial-gradient(circle at 60% 70%, rgba(255, 255, 255, 0.3) 1px, transparent 2px),
-               radial-gradient(circle at 80% 90%, rgba(255, 255, 255, 0.5) 0.5px, transparent 1px),
-               radial-gradient(circle at 40% 85%, rgba(255, 255, 255, 0.3) 0.8px, transparent 1.5px);
-             background-size: 25px 25px, 30px 30px, 15px 15px, 20px 20px;
-             animation: carbonation-float 4s infinite linear;
-             animation-delay: ${delay + 1}s;
-             opacity: ${animate && fillPercentage > 15 ? 0.8 : 0};
-             transition: opacity 1s ease-in-out;
+               radial-gradient(circle at 15% 85%, rgba(255, 255, 255, 0.7) 0.8px, transparent 1.5px),
+               radial-gradient(circle at 35% 75%, rgba(255, 255, 255, 0.6) 1px, transparent 2px),
+               radial-gradient(circle at 55% 90%, rgba(255, 255, 255, 0.8) 0.6px, transparent 1.2px),
+               radial-gradient(circle at 75% 80%, rgba(255, 255, 255, 0.5) 1.2px, transparent 2.4px),
+               radial-gradient(circle at 85% 95%, rgba(255, 255, 255, 0.9) 0.4px, transparent 0.8px),
+               radial-gradient(circle at 25% 60%, rgba(255, 255, 255, 0.4) 0.7px, transparent 1.4px),
+               radial-gradient(circle at 65% 65%, rgba(255, 255, 255, 0.6) 0.9px, transparent 1.8px),
+               radial-gradient(circle at 45% 95%, rgba(255, 255, 255, 0.7) 0.5px, transparent 1px);
+             background-size: 20px 20px, 25px 25px, 18px 18px, 30px 30px, 12px 12px, 22px 22px, 28px 28px, 16px 16px;
+             animation: carbonation-float 5s infinite linear, carbonation-drift 8s infinite ease-in-out;
+             animation-delay: ${delay + 1}s, ${delay + 0.5}s;
+             opacity: ${animate && fillPercentage > 15 ? 0.9 : 0};
+             transition: opacity 1.5s ease-in-out;
            }
           
           .beer-foam-inside {
              position: absolute;
-             top: -12px;
+             top: -15px;
              left: 0;
              right: 0;
-             height: 20px;
+             height: 25px;
              background: 
-               radial-gradient(ellipse at 25% 60%, rgba(255, 255, 255, 0.95) 30%, transparent 70%),
-               radial-gradient(ellipse at 75% 40%, rgba(255, 255, 255, 0.9) 25%, transparent 65%),
-               radial-gradient(ellipse at 50% 80%, rgba(255, 255, 255, 0.85) 35%, transparent 75%),
+               radial-gradient(ellipse at 20% 40%, rgba(255, 255, 255, 0.98) 25%, transparent 60%),
+               radial-gradient(ellipse at 80% 60%, rgba(255, 255, 255, 0.95) 20%, transparent 55%),
+               radial-gradient(ellipse at 50% 20%, rgba(255, 255, 255, 0.92) 30%, transparent 65%),
+               radial-gradient(ellipse at 35% 80%, rgba(255, 248, 220, 0.9) 35%, transparent 70%),
+               radial-gradient(ellipse at 65% 30%, rgba(255, 248, 220, 0.85) 25%, transparent 60%),
                linear-gradient(
                  to bottom,
-                 rgba(255, 255, 255, 0.95) 0%,
-                 rgba(255, 248, 220, 0.9) 30%,
-                 rgba(255, 248, 220, 0.7) 70%,
-                 rgba(255, 248, 220, 0.5) 100%
+                 rgba(255, 255, 255, 0.98) 0%,
+                 rgba(255, 252, 240, 0.95) 15%,
+                 rgba(255, 248, 220, 0.92) 35%,
+                 rgba(255, 245, 210, 0.88) 55%,
+                 rgba(255, 240, 200, 0.8) 75%,
+                 rgba(255, 235, 190, 0.7) 90%,
+                 rgba(255, 230, 180, 0.6) 100%
+               ),
+               repeating-linear-gradient(
+                 45deg,
+                 transparent 0px,
+                 rgba(255, 255, 255, 0.1) 1px,
+                 transparent 2px,
+                 rgba(255, 255, 255, 0.05) 3px
                );
-             border-radius: 60% 60% 0 0;
-             filter: blur(0.5px);
+             border-radius: 65% 55% 45% 75% / 80% 70% 60% 90%;
+             filter: blur(0.3px);
              box-shadow: 
-               0 -2px 4px rgba(255, 255, 255, 0.8),
-               inset 0 2px 4px rgba(0, 0, 0, 0.05),
-               inset 0 -3px 6px rgba(0, 0, 0, 0.1),
-               0 2px 4px rgba(0, 0, 0, 0.2);
-             animation: foam-wobble 3s infinite ease-in-out;
+               0 -3px 8px rgba(255, 255, 255, 0.9),
+               inset 0 3px 6px rgba(0, 0, 0, 0.08),
+               inset 0 -4px 8px rgba(0, 0, 0, 0.12),
+               0 3px 6px rgba(0, 0, 0, 0.25),
+               inset 2px 0 4px rgba(255, 255, 255, 0.6),
+               inset -2px 0 4px rgba(255, 255, 255, 0.6);
+             animation: foam-wobble 4s infinite ease-in-out;
              animation-delay: ${delay + 2.5}s;
            }
           
@@ -334,6 +368,30 @@ function BeerGlass({ result, maxVotes, delay, animate, isWinner }: BeerGlassProp
             animation-delay: ${delay + 3.5}s;
           }
           
+          .bubble-4 {
+            width: 3.5px;
+            height: 3.5px;
+            left: 70%;
+            bottom: 25%;
+            animation-delay: ${delay + 4}s;
+          }
+          
+          .bubble-5 {
+            width: 1.5px;
+            height: 1.5px;
+            left: 30%;
+            bottom: 35%;
+            animation-delay: ${delay + 4.5}s;
+          }
+          
+          .bubble-6 {
+            width: 2.5px;
+            height: 2.5px;
+            left: 80%;
+            bottom: 12%;
+            animation-delay: ${delay + 5}s;
+          }
+          
 
           
           @keyframes foam-bubble {
@@ -343,22 +401,40 @@ function BeerGlass({ result, maxVotes, delay, animate, isWinner }: BeerGlassProp
            
            @keyframes foam-wobble {
              0%, 100% { 
-               border-radius: 60% 40% 45% 55% / 70% 80% 20% 30%;
-               transform: scale(1);
+               border-radius: 65% 45% 50% 60% / 75% 85% 25% 35%;
+               transform: scale(1) rotate(0deg);
              }
-             33% { 
-               border-radius: 45% 55% 60% 40% / 80% 70% 30% 20%;
-               transform: scale(1.02);
+             20% { 
+               border-radius: 50% 60% 65% 45% / 80% 70% 30% 25%;
+               transform: scale(1.03) rotate(0.5deg);
              }
-             66% { 
-               border-radius: 55% 45% 40% 60% / 75% 85% 25% 35%;
-               transform: scale(0.98);
+             40% { 
+               border-radius: 60% 50% 45% 65% / 70% 90% 35% 20%;
+               transform: scale(0.97) rotate(-0.3deg);
+             }
+             60% { 
+               border-radius: 45% 65% 55% 50% / 85% 75% 20% 40%;
+               transform: scale(1.01) rotate(0.7deg);
+             }
+             80% { 
+               border-radius: 55% 50% 60% 45% / 80% 80% 25% 30%;
+               transform: scale(0.99) rotate(-0.2deg);
              }
            }
            
            @keyframes carbonation-float {
-             0% { transform: translateY(0); }
-             100% { transform: translateY(-20px); }
+             0% { transform: translateY(0) scale(1); }
+             25% { transform: translateY(-8px) scale(1.1); }
+             50% { transform: translateY(-15px) scale(0.9); }
+             75% { transform: translateY(-25px) scale(1.05); }
+             100% { transform: translateY(-35px) scale(0.8); }
+           }
+           
+           @keyframes carbonation-drift {
+             0%, 100% { transform: translateX(0) rotate(0deg); }
+             25% { transform: translateX(2px) rotate(1deg); }
+             50% { transform: translateX(-1px) rotate(-0.5deg); }
+             75% { transform: translateX(1px) rotate(0.8deg); }
            }
            
            @keyframes bubble-rise {
@@ -370,12 +446,20 @@ function BeerGlass({ result, maxVotes, delay, animate, isWinner }: BeerGlassProp
            
            @keyframes liquid-wave {
              0%, 100% { 
-               transform: scaleX(1) scaleY(1);
-               filter: brightness(1);
+               transform: scaleX(1) scaleY(1) rotate(0deg);
+               filter: brightness(1) hue-rotate(0deg) saturate(1);
+             }
+             25% { 
+               transform: scaleX(1.005) scaleY(1.01) rotate(0.2deg);
+               filter: brightness(1.05) hue-rotate(2deg) saturate(1.1);
              }
              50% { 
-               transform: scaleX(1.01) scaleY(1.02);
-               filter: brightness(1.1);
+               transform: scaleX(1.01) scaleY(1.02) rotate(0deg);
+               filter: brightness(1.1) hue-rotate(0deg) saturate(1.2);
+             }
+             75% { 
+               transform: scaleX(1.005) scaleY(1.01) rotate(-0.2deg);
+               filter: brightness(1.05) hue-rotate(-2deg) saturate(1.1);
              }
            }
            
@@ -402,6 +486,9 @@ function BeerGlass({ result, maxVotes, delay, animate, isWinner }: BeerGlassProp
                  <div className="bubble bubble-1"></div>
                  <div className="bubble bubble-2"></div>
                  <div className="bubble bubble-3"></div>
+                 <div className="bubble bubble-4"></div>
+                 <div className="bubble bubble-5"></div>
+                 <div className="bubble bubble-6"></div>
                </>
              )}
              {animate && fillPercentage > 10 && (
