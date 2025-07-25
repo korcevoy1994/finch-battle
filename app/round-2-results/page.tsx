@@ -10,8 +10,12 @@ import Image from 'next/image'
 export default function Round2ResultsPage() {
   const [votingStartedAt, setVotingStartedAt] = useState<string | null>(null)
   const [timerState, setTimerState] = useState<{ isRunning: boolean; timeLeft: number }>({ isRunning: false, timeLeft: 0 })
+  const [baseUrl, setBaseUrl] = useState<string>('')
 
   useEffect(() => {
+    // Set base URL on client side
+    setBaseUrl(window.location.origin)
+    
     const checkVotingState = async () => {
       try {
         const state = await getVotingState()
@@ -52,7 +56,7 @@ export default function Round2ResultsPage() {
           showConfetti={!timerState.isRunning && timerState.timeLeft === 0 && !votingStartedAt}
         />
       </div>
-      <QRCode url={`${window.location.origin}/round-2`} />
+      {baseUrl && <QRCode url={`${baseUrl}/round-2`} />}
     </div>
   )
 }

@@ -10,8 +10,12 @@ import Image from 'next/image'
 export default function Round1ResultsPage() {
   const [votingStartedAt, setVotingStartedAt] = useState<string | null>(null)
   const [timerState, setTimerState] = useState<{ isRunning: boolean; timeLeft: number }>({ isRunning: false, timeLeft: 0 })
+  const [baseUrl, setBaseUrl] = useState<string>('')
 
   useEffect(() => {
+    // Set base URL on client side
+    setBaseUrl(window.location.origin)
+    
     const checkVotingState = async () => {
       try {
         const state = await getVotingState()
@@ -56,7 +60,7 @@ export default function Round1ResultsPage() {
           numberOfWinners={2}
         />
       </div>
-      <QRCode url={`${window.location.origin}/round-1`} />
+      {baseUrl && <QRCode url={`${baseUrl}/round-1`} />}
     </div>
   )
 }
