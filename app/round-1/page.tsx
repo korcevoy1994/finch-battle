@@ -174,7 +174,7 @@ export default function Round1Page() {
         <VotingTimer 
           startedAt={votingStartedAt}
           round={1}
-          duration={120}
+          duration={180}
         />
 
         {/* Mesaje */}

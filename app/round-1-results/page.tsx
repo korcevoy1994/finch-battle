@@ -50,7 +50,7 @@ export default function Round1ResultsPage() {
         <VotingTimer
           startedAt={votingStartedAt}
           round={1}
-          duration={120}
+          duration={180}
           onStateChange={setTimerState}
         />
         <BeerChartResults

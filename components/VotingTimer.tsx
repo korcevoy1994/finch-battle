@@ -7,11 +7,11 @@ interface VotingTimerProps {
   startedAt?: string | null
   round: 1 | 2
   onTimeUp?: () => void
-  duration?: number // în secunde, implicit 120 (2 minute)
+  duration?: number // în secunde, implicit 180 (3 minute)
   onStateChange?: (state: { isRunning: boolean; timeLeft: number }) => void
 }
 
-export default function VotingTimer({ startedAt, round, onTimeUp, duration = 120, onStateChange }: VotingTimerProps) {
+export default function VotingTimer({ startedAt, round, onTimeUp, duration = 180, onStateChange }: VotingTimerProps) {
   const [timeLeft, setTimeLeft] = useState(duration)
   const [isRunning, setIsRunning] = useState(false)
 

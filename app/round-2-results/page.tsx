@@ -47,13 +47,14 @@ export default function Round2ResultsPage() {
         <VotingTimer 
           startedAt={votingStartedAt}
           round={2}
-          duration={120}
+          duration={180}
           onStateChange={setTimerState}
         />
         <BeerChartResults 
           round={2} 
           title="Rezultatele Finale"
           showConfetti={!timerState.isRunning && timerState.timeLeft === 0 && !votingStartedAt}
+          hideVoteCount={true}
         />
       </div>
       {baseUrl && <QRCode url={`${baseUrl}/round-2`} />}

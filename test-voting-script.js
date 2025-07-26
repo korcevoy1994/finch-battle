@@ -84,7 +84,7 @@ function getRandomDJId(djIds) {
 // Funcția principală de testare
 async function runVotingTest() {
   console.log('🎧 Lansarea testării automate a votării...')
-  console.log('⏱️  Durata: 2 minute')
+  console.log('⏱️  Durata: 3 minute')
   console.log('📊 Interval de votare: 2-8 secunde')
   console.log('')
   
@@ -101,7 +101,7 @@ async function runVotingTest() {
     
     const djIds = djs.map(dj => dj.id)
     const round = 1 // Votăm în prima rundă
-    const duration = 2 * 60 * 1000 // 2 minute în milisecunde
+    const duration = 3 * 60 * 1000 // 3 minute în milisecunde
     const startTime = Date.now()
     
     let voteCount = 0

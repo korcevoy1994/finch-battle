@@ -16,9 +16,10 @@ interface BeerChartResultsProps {
   title: string
   showConfetti?: boolean
   numberOfWinners?: number
+  hideVoteCount?: boolean
 }
 
-export default function BeerChartResults({ round, title, showConfetti, numberOfWinners = 1 }: BeerChartResultsProps) {
+export default function BeerChartResults({ round, title, showConfetti, numberOfWinners = 1, hideVoteCount = false }: BeerChartResultsProps) {
   const [results, setResults] = useState<VoteResult[]>([])
   const [loading, setLoading] = useState(true)
   const [maxVotes, setMaxVotes] = useState(0)
@@ -100,6 +101,7 @@ export default function BeerChartResults({ round, title, showConfetti, numberOfW
             delay={index * 0.5}
             animate={animate}
             isWinner={!!showConfetti && winnerVoteCounts.has(result.votes)}
+            hideVoteCount={hideVoteCount}
           />
         ))}
       </div>
@@ -113,9 +115,10 @@ interface BeerGlassProps {
   delay: number
   animate: boolean
   isWinner: boolean
+  hideVoteCount: boolean
 }
 
-function BeerGlass({ result, maxVotes, delay, animate, isWinner }: BeerGlassProps) {
+function BeerGlass({ result, maxVotes, delay, animate, isWinner, hideVoteCount }: BeerGlassProps) {
   // Logica de umplere: proporțional cu numărul maxim de voturi
   // Dacă liderul are 100 de voturi, iar DJ-ul are 50 de voturi, umplerea va fi de 50%
   // Minimum 10% pentru vizualizare, maximum 80%
@@ -522,9 +525,11 @@ function BeerGlass({ result, maxVotes, delay, animate, isWinner }: BeerGlassProp
         </div>
         {isWinner && <div className="text-2xl font-bold text-black">Câștigător</div>}
         <h3 className="font-bold text-xl text-amber-800">{result.dj.name}</h3>
-        <div className="bg-amber-100 border-2 border-amber-300 rounded-lg px-6 py-3 shadow-md">
-          <div className="text-2xl font-bold text-amber-800">{result.votes} voturi</div>
-        </div>
+        {!hideVoteCount && (
+          <div className="bg-amber-100 border-2 border-amber-300 rounded-lg px-6 py-3 shadow-md">
+            <div className="text-2xl font-bold text-amber-800">{result.votes} voturi</div>
+          </div>
+        )}
       </div>
     </div>
   )
